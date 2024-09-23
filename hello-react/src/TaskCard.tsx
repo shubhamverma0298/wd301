@@ -1,6 +1,11 @@
 import React from 'react';
 import './TaskCard.css'
 
+interface TaskCard {
+  dueDate: "string",
+  completedAtDate : "string",
+  assigneeName: "string",
+}
 const TaskCard = (props) =>{
     return(
       <div className="TaskItem py-3 px-5">
