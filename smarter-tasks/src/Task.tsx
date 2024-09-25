@@ -6,20 +6,31 @@ interface TaskProp {
   DueDate:string;
 }
 
+
+
 class Task extends React.Component<TaskProp> {
     render() {
       return (
         <div className="TaskItem shadow-md border border-slate-100">
-        <h2 className="text-base font-bold my-1">{this.props.title}</h2>
-        <p className="text-sm text-slate-500">
+        <h2 className="TaskItem text-base font-bold my-1">{this.props.title}</h2>
+        <p className="TaskItem text-sm text-slate-500">
           Due Date:{this.props.DueDate}
         </p>
-        <p className="text-sm text-slate-500">
+        <p className="TaskItem text-sm text-slate-500">
           Description:{this.props.description} 
         </p>
       </div>
       )
     }
   };
+// const Task = (props: TaskProp) => {
+//   return (
+//     <div className="TaskItem shadow-md border border-slate-100">
+//       <h2 className="text-base font-bold my-1">{props.title}</h2>
+//       <p className="text-sm text-slate-500">{props.DueDate}</p>
+//       <p className="text-sm text-slate-500">Description: {props.description}</p>
+//     </div>
+//   );
+// };
 
  export default Task;
