@@ -15,5 +15,14 @@ class TaskList extends React.Component<Props, State> {
         ));
     }
   }
-
+  // const TaskList = (props: Props) => {
+  //   return props.tasks.map((task, idx) => (
+  //     <Task
+  //       key={idx}
+  //       title={task.title}
+  //       description={task.description}
+  //       DueDate={task.DueDate}
+  //     />
+  //   ));
+  // };
 export default TaskList;
