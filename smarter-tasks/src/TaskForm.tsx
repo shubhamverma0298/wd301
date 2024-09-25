@@ -14,7 +14,7 @@ class TaskForm extends React.Component<TaskFormProps, TaskFormState> {
     this.state = {
         title: "",
         description:"",
-        DueDate:""
+        DueDate:"",
   }
 }
 
@@ -46,13 +46,13 @@ DueDateChanged: React.ChangeEventHandler<HTMLInputElement> = (event) => {
     return (
      <div>Task form
         <form onSubmit={this.addTask}>
-            <label className="TaskItem" htmlFor="todoTitle">Title</label>
-            <input className="TaskItem" id="todoTitle" type="text" value={this.state.title} onChange={this.titleChanged} required/>
-            <label className="TaskItem" htmlFor="todoDescription">Description</label>
-            <input className="TaskItem" id="todoDescription" type="text" value={this.state.description} onChange={(this.descriptionChanged)} required/>
-            <label className="TaskItem" htmlFor="todoDueDate">DueDate</label>
-            <input className="TaskItem" id="todoDueDate" type="text" value={this.state.DueDate} onChange={(this.DueDateChanged)} required/>
-            <button id="addTaskButton" type="submit">Add item</button>
+            <label className="TaskItem" htmlFor="todoTitle">Title :</label>
+            <input className="TaskItem border border-grey-300 rounded text-grey-900 w-full p-2 text-sm " id="todoTitle" type="text" value={this.state.title} onChange={this.titleChanged} required/>
+            <label className="TaskItem" htmlFor="todoDescription">Description :</label>
+            <input className="TaskItem border border-grey-300 rounded text-grey-900 w-full p-2 text-sm" id="todoDescription" type="text" value={this.state.description} onChange={(this.descriptionChanged)} required/>
+            <label className="TaskItem" htmlFor="todoDueDate">DueDate :</label>
+            <input className="TaskItem border border-grey-300 rounded text-grey-900 w-full p-2 text-sm" id="todoDueDate" type="text" value={this.state.DueDate} onChange={(this.DueDateChanged)} required/>
+            <button  className="TaskItem border border-grey-300 rounded p-2 text-sm" id="addTaskButton" type="submit">Add item</button>
         </form>
      </div>
     )
