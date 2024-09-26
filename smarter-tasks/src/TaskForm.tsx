@@ -1,73 +1,13 @@
 import React from "react";
 import { TaskItem } from "./types";
 interface TaskFormProps{
-    addTask: (task: TaskItem) => void;
+    addTask: (task:TaskItem ) => void;
 }
 interface TaskFormState {
     title: string;
     description: string;
     DueDate:string;
 }
-// class TaskForm extends React.Component<TaskFormProps, TaskFormState> {
-//   constructor(props: TaskFormProps) {
-//     super(props);
-//     this.state = {
-//         title: "",
-//         description:"",
-//         DueDate:"",
-//   }
-// }
-
-// addTask: React.FormEventHandler<HTMLFormElement> = (event) => {
-//     event.preventDefault();
-//     const newTask = {
-//         title: this.state.title,
-//         description:this.state.description,
-//         DueDate:this.state.DueDate,
-//       };
-//     if(newTask.title.length === 0 || newTask.DueDate.length === 0){
-//       return;
-//     }
-//       this.props.addTask(newTask);
-//       this.setState({ title: "" });
-//       this.setState({description:""});
-//       this.setState({DueDate:""})
-//   };
-// titleChanged: React.ChangeEventHandler<HTMLInputElement> = (event) => {
-//     console.log(`${event.target.value}`);
-//     this.setState({ title: event.target.value });
-//   };
-// descriptionChanged: React.ChangeEventHandler<HTMLInputElement> = (event) => {
-//   console.log(`${event.target.value}`);
-//   this.setState({ description: event.target.value });
-// };
-// DueDateChanged: React.ChangeEventHandler<HTMLInputElement> = (event) => {
-//   console.log(`${event.target.value}`);
-//   this.setState({ DueDate: event.target.value });
-// };
-//  render(){
-//     return (
-//      <div>
-//         <form onSubmit={this.addTask}>
-//             <div>
-//             <label htmlFor="todoTitle">Title :</label>
-//             <input className=" border border-grey-900 rounded text-grey-900 w-full p-2 text-sm " id="todoTitle" type="text" value={this.state.title} onChange={this.titleChanged} />
-//             </div>
-//             <div>
-//             <label htmlFor="todoDescription">Description :</label>
-//             <input className=" border border-grey-300 rounded text-grey-900 w-full p-2 text-sm mp-2" id="todoDescription" type="text" value={this.state.description} onChange={(this.descriptionChanged)} />
-//             </div>
-//             <div>
-//             <label htmlFor="todoDueDate">DueDate :</label>
-//             <input className=" border border-grey-300 rounded text-grey-900 w-full p-2 text-sm" id="todoDueDate" type="date" value={this.state.DueDate} onChange={(this.DueDateChanged)} />
-//             </div>
-//             <button  className=" border border-grey-300 rounded p-2 text-sm bg-green-500" id="addTaskButton" type="submit">Add item</button>
-//         </form>
-//      </div>
-//     )
-//   }
-// }
-
  const TaskForm = (props: TaskFormProps) => {;
  const [formState, setFormState] = React.useState<TaskFormState>({
   title: "",
@@ -99,15 +39,15 @@ const dueDateChanged: React.ChangeEventHandler<HTMLInputElement> = (event) => {
 };
  return (
   <form onSubmit={addTask}>
-    <div className="grid md:grid-cols-6 md:gap-3 TaskItem">
-      <div className="relative z-0 w-full mb-6 group TaskItem">
+    <div className="grid md:grid-cols-4 md:gap-4 ">
+      <div className="relative z-0 w-full mb-6 group ">
         <input
           id="todoTitle"
           name="todoTitle"
           type="text"
           value={formState.title}
           onChange={titleChanged}
-          className=" TaskItem block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+          className="  block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
           placeholder=" "
         />
         <label
@@ -117,7 +57,7 @@ const dueDateChanged: React.ChangeEventHandler<HTMLInputElement> = (event) => {
           Todo Title
         </label>
       </div>
-      <div className="relative z-0 w-full mb-6 group TaskItem">
+      <div className="relative z-0 w-full mb-6 group ">
         <input
           id="todoDescription"
           name="todoDescription"
@@ -125,7 +65,7 @@ const dueDateChanged: React.ChangeEventHandler<HTMLInputElement> = (event) => {
           value={formState.description}
           onChange={descriptionChanged}
           placeholder=" "
-          className=" TaskItem block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer TaskItem"
+          className="  block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer "
         />
         <label
           htmlFor="todoDescription"
@@ -134,14 +74,14 @@ const dueDateChanged: React.ChangeEventHandler<HTMLInputElement> = (event) => {
           Description
         </label>
       </div>
-      <div className="relative z-0 w-full mb-6 group TaskItem">
+      <div className="relative z-0 w-full mb-6 group ">
         <input
           id="todoDueDate"
           name="todoDueDate"
           type="date"
           value={formState.DueDate}
           onChange={dueDateChanged}
-          className=" TaskItem block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+          className="  block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
           placeholder=" "
           required
         />
