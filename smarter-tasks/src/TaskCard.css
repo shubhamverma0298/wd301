@@ -5,3 +5,16 @@
     margin-top: 12px;
     border-color: black;
   }
+.deleteTaskButton {
+    background-color: #ff0000; /* Red background */
+    color: #fff; /* White text */
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+
+.deleteTaskButton:hover {
+    background-color: #cc0000; /* Darker red background on hover */
+  }

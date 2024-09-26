@@ -24,6 +24,11 @@ const TaskApp = () => {
       clearTimeout(id);
     };
   },[taskAppState.tasks]);
+  const deleteTask = (idx: number) => {
+    const updatedTasks = [...taskAppState.tasks];
+    updatedTasks.splice(idx, 1);
+    setTaskAppState({ tasks: updatedTasks });
+  };
   return (
     <div className="container py-10 max-w-4xl mx-auto">
       <h1 className="text-3xl mb-2 font-bold text-slate-700">
@@ -39,7 +44,7 @@ const TaskApp = () => {
             Pending
           </h1>
           <TaskForm addTask={addTask} />
-          <TaskList tasks={taskAppState.tasks} />
+          <TaskList tasks={taskAppState.tasks} onDelete={deleteTask} />
         </div>
       </div>
     </div>
