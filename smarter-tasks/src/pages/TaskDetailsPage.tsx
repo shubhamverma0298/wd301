@@ -6,11 +6,9 @@ import { TaskItem } from '../types';
 interface TaskDetailsPageParams extends Record<string, string> {
   id: string;
 }
-
 interface TaskAppState {
   tasks: TaskItem[];
 }
-
 const TaskDetailsPage: React.FC = () => {
   const { id } = useParams<TaskDetailsPageParams>();
   const [taskAppState] = useLocalStorage<TaskAppState>(
@@ -21,6 +19,7 @@ const TaskDetailsPage: React.FC = () => {
   );
   
   const task = taskAppState.tasks.find(task => task.id.toString() === id);
+  console.log(task?.id.toString())
   return (
     <div className="bg-white shadow-md rounded-md p-4 m-8">
       <div className="flex justify-between items-center mb-4">

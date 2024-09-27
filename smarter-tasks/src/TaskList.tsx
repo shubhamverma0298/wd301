@@ -14,7 +14,7 @@ const TaskList = (props: Props) => {
     <li key={idx} >
       <Task
        key={idx} 
-       id={idx}
+       id={task.id}
        title={task.title}
        description={task.description}
        DueDate={task.DueDate}

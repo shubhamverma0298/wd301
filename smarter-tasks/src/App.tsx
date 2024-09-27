@@ -11,6 +11,7 @@ import Signin from "./pages/Signin";
 import { Navigate } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
 import NotFound from './pages/Notfound';
+//import ReactPlayground from './ReactPlayground';
 
 const router = createBrowserRouter([
   {
@@ -54,8 +55,12 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <RouterProvider router={router} />
+    <>
+      <RouterProvider router={router} />
+    </>
 );
 }
 
 export default App
+
+//<ReactPlayground />
