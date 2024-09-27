@@ -14,8 +14,8 @@ const Task = (props: TaskItem) => {
             <a href={`/tasks/${props.id}`}>{props.title} </a>
           </h2>
      </div>
-      <p className="text-sm text-slate-500">{props.DueDate}</p>
-      <p className="text-sm text-slate-500">Description: {props.description}</p>
+      <p className="text-sm text-slate-500">Due Date :{props.DueDate}</p>
+      <p className="text-sm text-slate-500">Description : {props.description}</p>
     </div>
   );
 };
