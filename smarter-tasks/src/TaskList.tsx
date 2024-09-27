@@ -13,9 +13,11 @@ const TaskList = (props: Props) => {
   const taskElements = props.tasks.map((task, idx) => (
     <li key={idx} >
       <Task
-        title={task.title}
-        description={task.description}
-        DueDate={task.DueDate}
+       key={idx} 
+       id={idx}
+       title={task.title}
+       description={task.description}
+       DueDate={task.DueDate}
       />
       <button
         onClick={() => handleDelete(idx)}

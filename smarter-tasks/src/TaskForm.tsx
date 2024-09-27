@@ -3,17 +3,19 @@ import { TaskItem } from "./types";
 interface TaskFormProps{
     addTask: (task:TaskItem ) => void;
 }
-interface TaskFormState {
-    title: string;
-    description: string;
-    DueDate:string;
-}
+// interface TaskFormState {
+//     id:String;
+//     title: string;
+//     description: string;
+//     DueDate:string;
+// }
  const TaskForm = (props: TaskFormProps) => {;
- const [formState, setFormState] = React.useState<TaskFormState>({
-  title: "",
-  description: "",
-  DueDate: "",
-}); 
+  const [formState, setFormState] = React.useState<TaskItem>({
+    id: Number(new Date()),
+      title: '',
+      description: '',
+      DueDate: '',
+  });
  const addTask: React.FormEventHandler<HTMLFormElement> = (event) => {
   event.preventDefault();
   console.log(`Submitted the form with`);
@@ -21,7 +23,7 @@ interface TaskFormState {
     return;
   }
   props.addTask(formState);
-  setFormState({ title: "", description: "", DueDate: "" });
+  setFormState({ id:Number(new Date()), title: "", description: "", DueDate: ""});
 };
  const titleChanged: React.ChangeEventHandler<HTMLInputElement> = (event) => {
   console.log(`${event.target.value}`);
