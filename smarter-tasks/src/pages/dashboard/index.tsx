@@ -17,6 +17,7 @@ const Dashboard: React.FC = () => {
   }, [navigate]);
   const handleLogout = () => {
     // Clear user data from local storage
+    localStorage.removeItem('authToken');
     localStorage.removeItem('userData');
     // Redirect to sign-in page
     navigate('/signin');
@@ -24,8 +25,9 @@ const Dashboard: React.FC = () => {
   return (
     <div>
       {userData && (
-        <div>
-          <h1>Welcome, {userData.name}</h1>
+        <div >
+          <h1 className="text-3xl font-bold text-center text-gray-800 mb-8">Dashboard</h1>
+          <h2>Welcome, {userData.name}</h2>
           <p>Email: {userData.email}</p>
           <a href="#" id="logout-link" onClick={handleLogout}>
             Logout

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { API_ENDPOINT } from '../../config/constants';
+// import { API_ENDPOINT } from '../../config/constants';
 import { useNavigate } from 'react-router-dom';
 
 const SignupForm: React.FC = () => {
@@ -13,8 +13,8 @@ const SignupForm: React.FC = () => {
     event.preventDefault();
 
     try {
-      // const response = await fetch(`https://wd301-api.pupilfirst.school/organisations`
-       const response = await fetch(`${API_ENDPOINT}/organisations`, {
+      // const response = await fetch(`${API_ENDPOINT}/organisations`, 
+      const response = await fetch(`https://wd301-api.pupilfirst.school/organisations`,{
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name: organisationName, user_name: userName, email: userEmail, password: userPassword}),

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 // First we will import the API_ENDPOINT constant from the `config` folder
-import { API_ENDPOINT } from '../../config/constants';
+// import { API_ENDPOINT } from '../../config/constants';
 import { useNavigate } from 'react-router-dom';
 
 const SigninForm: React.FC = () => {
@@ -11,7 +11,8 @@ const SigninForm: React.FC = () => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
-      const response = await fetch(`${API_ENDPOINT}/users/sign_in`, {
+      // const response = await fetch(`${API_ENDPOINT}/users/sign_in`
+      const response = await fetch(`https://wd301-api.pupilfirst.school/organisations`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
