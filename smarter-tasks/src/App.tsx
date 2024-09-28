@@ -1,66 +1,47 @@
-import HomePage from './pages/HomePage';
-import TaskListPage from './pages/TaskListPage';
-import Layout from "./Layout";
-import TaskDetailsPage from './pages/TaskDetailsPage';
-import './App.css'
 import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
-import Signin from "./pages/Signin";
-import { Navigate } from "react-router-dom";
-import ProtectedRoute from "./ProtectedRoute";
-import NotFound from './pages/Notfound';
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Navigate to="/signin" replace />,
-  },
-  {
-    path: "/signin",
-    element: <Signin />,
-  },
-  {
-    element: (
-      <ProtectedRoute>
-      <Layout />
-    </ProtectedRoute>
-    ),
-    children: [
-      {
-        path: "home",
-        element:<HomePage />
-      },
-      {
-        path: "tasks",
-        element:<TaskListPage />
-      },
-      {
-        path: "tasks/:id",
-        element:<TaskDetailsPage />
-      },
-    ]
-  },
-  {
-    path: "/notfound",
-    element: <NotFound />,
-  },
-  {
-    path: "*",
-    element: <Navigate to="/notfound" replace />,
-  },
-]);
-
-function App() {
-  return (
-    <div>
+    createBrowserRouter,
+    RouterProvider,
+  } from "react-router-dom";
+  import Notfound from "./pages/Notfound";
+  import Signup from './pages/signup';
+  import Signin from './pages/signin';
+  import Dashboard from "./pages/dashboard";
+  import ProtectedRoute from "./ProtectedRoute";
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Signup />,
+    },
+    {
+      path: "/signup",
+      element: <Signup />,
+    },
+    {
+      path: "/signin",
+      element: <Signin />,
+    },
+    {
+      path: "/notfound",
+      element: <Notfound />,
+    },
+    {
+      path: "/dashboard",
+      element: (
+        <ProtectedRoute>
+          <Dashboard />
+        </ProtectedRoute>
+      ),
+    },
+    {
+      path: "*",
+      element: <Notfound />,
+    }
+  ]);
+  
+  const App = () => {
+    return (
       <RouterProvider router={router} />
-    </div>
-);
-}
-
-export default App
-
-//<ReactPlayground />
-//<RouterProvider router={router} 
+    );
+  }
+  
+  export default App

@@ -1,5 +1,5 @@
 import React from 'react';
-import SigninForm from "./SigninForm"
+import SigninForm from './SigninForm';
 // Let's define the Signin component
 const Signin: React.FC = () => {
   return (
