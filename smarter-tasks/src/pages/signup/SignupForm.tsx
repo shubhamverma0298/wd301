@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { API_ENDPOINT } from '../../config/constants';
+import { useNavigate } from 'react-router-dom';
 
 const SignupForm: React.FC = () => {
+  const navigate = useNavigate(); 
   const [organisationName, setOrganisationName] = useState('');
   const [userName, setUserName] = useState('');
   const [userEmail, setUserEmail] = useState('');
@@ -11,7 +13,8 @@ const SignupForm: React.FC = () => {
     event.preventDefault();
 
     try {
-      const response = await fetch(`${API_ENDPOINT}/organisations`, {
+      // const response = await fetch(`https://wd301-api.pupilfirst.school/organisations`
+       const response = await fetch(`${API_ENDPOINT}/organisations`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name: organisationName, user_name: userName, email: userEmail, password: userPassword}),
@@ -27,13 +30,14 @@ const SignupForm: React.FC = () => {
       // if successful, save the token in localStorage
       localStorage.setItem('authToken', data.token);
     // if successful, save the user info in localStorage
-      localStorage.setItem('userData', JSON.stringify(data.user))
+    localStorage.setItem('userData', JSON.stringify(data.user))
+    navigate('/dashboard');
     } catch (error) {
       console.error('Sign-up failed:', error);
     }
-    //const userData = JSON.parse(localStorage.getItem('userData'));
-    //console.log(userData.id);
-    localStorage.removeItem('userData');
+    // //const userData = JSON.parse(localStorage.getItem('userData'));
+    // //console.log(userData.id);
+    // localStorage.removeItem('userData');
   };
   return (
     <form onSubmit={handleSubmit}>

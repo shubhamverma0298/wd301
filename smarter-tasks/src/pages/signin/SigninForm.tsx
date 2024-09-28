@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 // First we will import the API_ENDPOINT constant from the `config` folder
 import { API_ENDPOINT } from '../../config/constants';
+import { useNavigate } from 'react-router-dom';
 
 const SigninForm: React.FC = () => {
+  const navigate = useNavigate(); // Initialize useNavigate hook
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
   // Then we will define the handle submit function
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
     try {
       const response = await fetch(`${API_ENDPOINT}/users/sign_in`, {
         method: 'POST',
@@ -29,7 +29,7 @@ const SigninForm: React.FC = () => {
       // After successful signin, first we will save the token in localStorage
       localStorage.setItem('authToken', data.token);
       localStorage.setItem('userData', JSON.stringify(data.user));
-
+      navigate('/dashboard');
     } catch (error) {
       console.error('Sign-in failed:', error);
     }
