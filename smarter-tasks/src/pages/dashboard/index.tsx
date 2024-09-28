@@ -26,7 +26,7 @@ const Dashboard: React.FC = () => {
     <div>
       {userData && (
         <div >
-          <h1 className="text-3xl font-bold text-center text-gray-800 mb-8">Dashboard</h1>
+          <h1 className="h-full text-3xl font-bold text-center text-gray-800 mb-8 bg-zinc-400">Dashboard</h1>
           <h2>Welcome, {userData.name}</h2>
           <p>Email: {userData.email}</p>
           <a href="#" id="logout-link" onClick={handleLogout}>

@@ -39,8 +39,9 @@ import {
   ]);
   
   const App = () => {
-    return (
+    return (<div className="w-full">
       <RouterProvider router={router} />
+      </div>
     );
   }
   
