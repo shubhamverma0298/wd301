@@ -1,48 +1,12 @@
-import {
-    createBrowserRouter,
-    RouterProvider,
-  } from "react-router-dom";
-  import Notfound from "./pages/Notfound";
-  import Signup from './pages/signup';
-  import Signin from './pages/signin';
-  import Dashboard from "./pages/dashboard";
-  import ProtectedRoute from "./ProtectedRoute";
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Signup />,
-    },
-    {
-      path: "/signup",
-      element: <Signup />,
-    },
-    {
-      path: "/signin",
-      element: <Signin />,
-    },
-    {
-      path: "/notfound",
-      element: <Notfound />,
-    },
-    {
-      path: "/dashboard",
-      element: (
-        <ProtectedRoute>
-          <Dashboard />
-        </ProtectedRoute>
-      ),
-    },
-    {
-      path: "*",
-      element: <Notfound />,
-    }
-  ]);
-  
-  const App = () => {
-    return (<div className="w-full">
+import { RouterProvider } from "react-router-dom";
+
+import router from "./routes"
+
+const App = () => {
+  return (
+    <div>
       <RouterProvider router={router} />
-      </div>
-    );
-  }
-  
-  export default App
+    </div>
+  );
+}
+export default App;
