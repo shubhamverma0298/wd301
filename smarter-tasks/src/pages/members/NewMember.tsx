@@ -95,6 +95,7 @@ const NewMember = () => {
                         placeholder='Enter member name...'
                         autoFocus
                         {...register('name', { required: true })}
+                        id="name"
                         className={`w-full border rounded-md py-2 px-3 my-4 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue ${
                             errors.name ? 'border-red-500' : ''
                         }`}
@@ -105,6 +106,7 @@ const NewMember = () => {
                         placeholder='Enter member email...'
                         autoFocus
                         {...register('email', { required: true })}
+                        id="email"
                         className={`w-full border rounded-md py-2 px-3 my-4 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue ${
                             errors.email ? 'border-red-500' : ''
                         }`}
@@ -115,6 +117,7 @@ const NewMember = () => {
                         placeholder='Enter member password...'
                         autoFocus
                         {...register('password', { required: true })}
+                        id="password"
                         className={`w-full border rounded-md py-2 px-3 my-4 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue ${
                             errors.password ? 'border-red-500' : ''
                         }`}
