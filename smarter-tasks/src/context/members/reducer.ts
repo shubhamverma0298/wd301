@@ -2,11 +2,8 @@ interface Member{
     id: number;
     name: string;
     email:string;
+    organsation_id: number;
 }
-// interface Action {
-//     type: string;
-//     payload?: any;
-//   }
 export interface MembersState {
     members: Member[];
     isLoading: boolean;
@@ -20,35 +17,42 @@ export interface MembersState {
     errorMessage: ''
   };
   export type MembersActions = 
-  | { type: 'FETCH_PROJECTS_REQUEST' }
-  | { type: 'FETCH_PROJECTS_SUCCESS'; payload: Member[] }
-  | { type: 'FETCH_PROJECTS_FAILURE'; payload: string }
+  | { type: 'FETCH_MEMBERS_REQUEST' }
+  | { type: 'FETCH_MEMBERS_SUCCESS'; payload: Member[] }
+  | { type: 'FETCH_MEMBERS_FAILURE'; payload: string }
   | { type: 'ADD_MEMBER_SUCCESS'; payload: Member }
-export const reducer = (state: MembersState=initialState, action: MembersActions): MembersState => {
-    // >>> Dialogue one: In switch statement, we will check the action type and return corresponsing state, like we were doing in the if-statements.
+  | { type: 'DELETE_MEMBER_SUCCESS'; payload: number }
+
+  export const membersReducer = (state: MembersState, action: MembersActions): MembersState => {
     switch (action.type) {
-      case "FETCH_PROJECTS_REQUEST":
+      case "FETCH_MEMBERS_REQUEST":
         return {
           ...state,
           isLoading: true
         };   
-      case "FETCH_PROJECTS_SUCCESS":
+      case "FETCH_MEMBERS_SUCCESS":
         return {
           ...state,
           isLoading: false,
           members: action.payload,
         };      
-      case "FETCH_PROJECTS_FAILURE":
+      case "FETCH_MEMBERS_FAILURE":
         return {
           ...state,
-          isLoading: true,
+          isLoading: false,
           isError: true, 
           errorMessage: action.payload
-        }; 
-        case 'ADD_MEMBER_SUCCESS':
-            // Here I'll insert new new project object, which is coming in this 
-            // `action.payload`, to the `projects` array present in state.
-            return { ...state, members: [...state.members, action.payload] };            
+        };        
+      case 'ADD_MEMBER_SUCCESS' :
+        return { 
+            ...state,
+             members: [...state.members, action.payload] 
+        };           
+      case 'DELETE_MEMBER_SUCCESS' :
+        return { 
+            ...state,
+             members: state.members.filter(member => member.id !== action.payload) 
+        };           
       default:
         return state;
     }

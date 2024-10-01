@@ -6,7 +6,7 @@ const ProjectList: React.FC = () => {
   const dispatchProjects = useProjectsDispatch();
   useEffect(() => {
     fetchProjects(dispatchProjects)
-  }, [])
+  }, [dispatchProjects])
   return (
     <div className="grid gap-4 grid-cols-4 mt-5">
       <ProjectListItems />
