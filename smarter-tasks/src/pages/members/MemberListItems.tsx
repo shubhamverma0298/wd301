@@ -22,7 +22,6 @@ export default function MemberListItems() {
           <h5 className="mb-2 text-xl font-medium tracking-tight text-gray-900 dark:text-white">Email: {member.email}</h5>
           <button
             type="button"
-            id="new-member-btn"
             onClick={() => handleDelete(member.id)}
             className="px-4 py-2 text-sm font-medium text-white bg-red-700 rounded-md hover:bg-opacity-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
           >
