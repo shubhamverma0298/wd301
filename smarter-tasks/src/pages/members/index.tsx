@@ -1,4 +1,4 @@
-import MemberList from "./MembersList";
+import MemberList from "./MemberList";
 import NewMember from "./NewMember";
 
 

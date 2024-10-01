@@ -3,7 +3,7 @@ import { Disclosure, Menu, Transition, Switch } from '@headlessui/react'
 import { UserCircleIcon } from '@heroicons/react/24/outline'
 // import Logo from "../src/assets/images/logo.png"
 import { Link, useLocation } from "react-router-dom"
-import { ThemeContext } from '../../../context/theme'
+import { ThemeContext } from '../../context/theme'
 const userNavigation = [
   { name: 'Profile', href: '#' },
   { name: 'Sign out', href: '/logout' },
