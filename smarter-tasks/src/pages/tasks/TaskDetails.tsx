@@ -1,5 +1,5 @@
 import { Dialog, Transition, Listbox } from "@headlessui/react";
-import { Fragment, useState,} from "react";
+import { Fragment, useState,useEffect} from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useTasksDispatch, useTasksState } from "../../context/task/context";
@@ -8,7 +8,9 @@ import { useProjectsState } from "../../context/projects/context";
 import { TaskDetailsPayload } from "../../context/task/types";
 import CheckIcon from "@heroicons/react/24/outline/CheckIcon";
 import { useMembersState } from "../../context/members/context";
-
+import Comments from "../comment/Comments";
+import { refreshComments } from "../../context/comment/actions";
+import { useCommentsDispatch, useCommentsState } from "../../context/comment/context";
 type TaskFormUpdatePayload = TaskDetailsPayload & {
   selectedPerson: string;
 };
@@ -34,6 +36,9 @@ const TaskDetails = () => {
   const taskListState = useTasksState();
   const taskDispatch = useTasksDispatch();
   const memberState = useMembersState();
+  const commentDispatch = useCommentsDispatch();
+  const commentState = useCommentsState();
+  console.log(commentState)
 
   const selectedProject = projectState?.projects.filter(
     (project) => `${project.id}` === projectID
@@ -43,6 +48,9 @@ const TaskDetails = () => {
   const [selectedPerson, setSelectedPerson] = useState(
     selectedTask.assignedUserName ?? ""
   );
+  useEffect(()=>{
+    refreshComments(commentDispatch,`${projectID}`, `${taskID}`);
+  },[taskID,projectID,commentDispatch])
   // Use react-form-hook to manage the form. Initialize with data from selectedTask.
   const {
     register,
@@ -120,6 +128,7 @@ const TaskDetails = () => {
                         placeholder="Enter title"
                         id="title"
                         {...register("title", { required: true })}
+                        name="title"
                         className="w-full border rounded-md py-2 px-3 my-4 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue"
                       />
                       <input
@@ -128,6 +137,7 @@ const TaskDetails = () => {
                         placeholder="Enter description"
                         id="description"
                         {...register("description", { required: true })}
+                        name="description"
                         className="w-full border rounded-md py-2 px-3 my-4 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue"
                       />
                       <input
@@ -136,6 +146,7 @@ const TaskDetails = () => {
                         placeholder="Enter due date"
                         id="dueDate"
                         {...register("dueDate", { required: true })}
+                        name="dueDate"
                         className="w-full border rounded-md py-2 px-3 my-4 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue"
                       />
                         <h3><strong>Assignee</strong></h3>
@@ -184,6 +195,7 @@ const TaskDetails = () => {
                         </Listbox>
                       <button
                         type="submit"
+                        id="newTaskSubmitBtn"
                         className="inline-flex justify-center rounded-md border border-transparent bg-blue-600 px-4 py-2 mr-2 text-sm font-medium text-white hover:bg-blue-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                       >
                         Update
@@ -201,6 +213,7 @@ const TaskDetails = () => {
               </Transition.Child>
             </div>
           </div>
+          <Comments />
         </Dialog>
       </Transition>
     </>
