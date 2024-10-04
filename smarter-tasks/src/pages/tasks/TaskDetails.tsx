@@ -9,6 +9,7 @@ import { TaskDetailsPayload } from "../../context/task/types";
 import CheckIcon from "@heroicons/react/24/outline/CheckIcon";
 import { useMembersState } from "../../context/members/context";
 import Comments from "../comment/Comments";
+import CommentList from "../comment/CommentList";
 import { refreshComments } from "../../context/comment/actions";
 import { useCommentsDispatch, useCommentsState } from "../../context/comment/context";
 type TaskFormUpdatePayload = TaskDetailsPayload & {
@@ -214,7 +215,7 @@ const TaskDetails = () => {
               </Transition.Child>
             </div>
           </div>
-          <Comments/>
+          <CommentList/>
         </Dialog>
       </Transition>
     </>

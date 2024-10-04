@@ -1,5 +1,5 @@
 import { RouterProvider } from "react-router-dom";
-import { useContext } from "react";
+import { Suspense,useContext } from "react";
 import router from "./routes"
 import { ThemeContext } from "./context/theme";
 import "./App.css";
@@ -12,7 +12,9 @@ const App = () => {
      <div className={`h-screen w-full mx-auto py-2 ${theme === "dark" ? "dark" : ""}`}>
       <ProjectsProvider>
        <MembersProvider>
-        <RouterProvider router={router} />
+          <Suspense fallback={<>Loading...</>}>
+            <RouterProvider router={router} />
+          </Suspense>
        </MembersProvider>
       </ProjectsProvider>
     </div>
