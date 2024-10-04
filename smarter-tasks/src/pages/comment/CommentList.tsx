@@ -26,6 +26,13 @@ export default function CommentList() {
   if (isError) {
     return <p className='mt-3 text-pink-500'>{errorMessage}</p>;
   }
+  if (comments.length < 1) {
+    return (
+      <div>
+        <h4>No Comments Yet</h4>
+      </div>
+    );
+  }
   const retriveComment = (owner: any) => {
     const assignee = memberState?.members?.filter(
       (member) => member.id === owner

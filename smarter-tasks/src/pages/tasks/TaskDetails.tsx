@@ -209,11 +209,12 @@ const TaskDetails = () => {
                       </button>
                     </form>
                   </div>
+                  <div><Comments/></div>
                 </Dialog.Panel>
               </Transition.Child>
             </div>
           </div>
-          <Comments />
+          <Comments/>
         </Dialog>
       </Transition>
     </>

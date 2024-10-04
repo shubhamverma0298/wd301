@@ -26,7 +26,7 @@ export default function Comments() {
         <input
           type="text"
           required
-          placeholder="Enter comment in this task"
+          placeholder="Enter comment to communicate"
           id="commentBox"
           {...register("description", { required: true })}
           className="w-full border rounded-md py-2 px-3 my-4 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue"
@@ -39,7 +39,7 @@ export default function Comments() {
          Add Comment
         </button>
       </form>
-      <CommentList />
+      <div><CommentList /></div>
     </div>
   )
 }
